@@ -10,6 +10,7 @@ use switch::__switch;
 use task::{TaskControlBlock, TaskStatus};
 use alloc::vec::Vec;
 
+pub use context::TaskContext;
 
 pub struct TaskManager {
     num_app: usize,

@@ -1,7 +1,7 @@
-use core::arch::global_asm;
-
 mod context;
 
+use core::arch::asm;
+use core::arch::global_asm;
 use riscv::register::{
     mtvec::TrapMode,
     stvec,
@@ -21,7 +21,6 @@ use crate::task::{
     current_user_token,
     current_trap_cx,
 };
-
 use crate::timer::set_next_trigger;
 use crate::config::{TRAP_CONTEXT, TRAMPOLINE};
 
@@ -60,7 +59,7 @@ pub fn trap_handler() -> ! {
         }
         Trap::Exception(Exception::StoreFault) |
         Trap::Exception(Exception::StorePageFault) => {
-            println!("[kernel] PageFault in application, core dumped.");
+            println!("[kernel] PageFault in application, bad addr = {:#x}, bad instruction = {:#x}, core dumped.", stval, cx.sepc);
             exit_current_and_run_next();
         }
         Trap::Exception(Exception::IllegalInstruction) => {
@@ -104,5 +103,6 @@ pub fn trap_return() -> ! {
 pub fn trap_from_kernel() -> ! {
     panic!("a trap from kernel!");
 }
-pub use context::TrapContext;
+
+pub use context::{TrapContext};
 
