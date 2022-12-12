@@ -3,19 +3,21 @@
     .section .data
     .global _num_app
 _num_app:
-    .quad 4
+    .quad 5
     .quad app_0_start
     .quad app_1_start
     .quad app_2_start
     .quad app_3_start
-    .quad app_3_end
+    .quad app_4_start
+    .quad app_4_end
 
     .global _app_names
 _app_names:
     .string "00power_3"
     .string "01power_5"
     .string "02power_7"
-    .string "03sleep"
+    .string "03power_6"
+    .string "04sleep"
 
     .section .data
     .global app_0_start
@@ -46,5 +48,13 @@ app_2_end:
     .global app_3_end
     .align 3
 app_3_start:
-    .incbin "../user/target/riscv64gc-unknown-none-elf/release/03sleep"
+    .incbin "../user/target/riscv64gc-unknown-none-elf/release/03power_6"
 app_3_end:
+
+    .section .data
+    .global app_4_start
+    .global app_4_end
+    .align 3
+app_4_start:
+    .incbin "../user/target/riscv64gc-unknown-none-elf/release/04sleep"
+app_4_end:
