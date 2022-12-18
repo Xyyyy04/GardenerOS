@@ -1,4 +1,4 @@
-imod heap_allocator;
+mod heap_allocator;
 mod page_table;
 mod address;
 mod frame_allocator;

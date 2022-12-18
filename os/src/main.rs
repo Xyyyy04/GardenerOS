@@ -54,4 +54,4 @@ pub fn rust_main() -> ! {
     loader::list_apps();
     task::run_tasks();
     panic!("Unreachable in rust_main!");
-}}
+}

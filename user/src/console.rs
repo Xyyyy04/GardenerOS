@@ -1,6 +1,5 @@
 use core::fmt::{self, Write};
-use super::write;
-use super::read;
+use super::{read, write};
 
 const STDIN: usize = 0;
 const STDOUT: usize = 1;
